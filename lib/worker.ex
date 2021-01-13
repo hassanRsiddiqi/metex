@@ -29,7 +29,7 @@ defmodule Metex.Worker do
   defp parse(_), do: :error
   defp get_temp(data) do
     try do
-    temp = data["main"]["temp"] - 273.15
+    temp = data["main"]["temp"] - 273.15 |>Float.ceil(2)
     {:ok, temp}
     rescue
       _ -> :error
