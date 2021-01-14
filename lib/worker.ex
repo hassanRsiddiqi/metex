@@ -38,5 +38,5 @@ defmodule Metex.Worker do
   defp get_url(location) do
     "http://api.openweathermap.org/data/2.5/weather?q=#{location}&appid=#{apikey()}"
   end
-  def apikey(), do: "1859b4fbf0af1712a060a40a6f244e3b"
+  def apikey(), do: "API_KEY_HERE"
 end
