@@ -7,16 +7,42 @@ is my first concurrent Application in elixir, which uses Actor, Worker & Coordin
 
 Clone the Project `git clone "https://github.com/hassanRsiddiqi/metex"`
 
+goto branch `genServer`
 goto project directory & run `iex -S mix`
 
-```
-cities = ["Multan","Singapore", "Monaco", "Vatican City", "Hong Kong", "Macau"]
-Metex.temp cities
-```
-
-Response
+#### Start Server
 
 ```
+Metex.Worker.start_link
+# {:ok, #PID<0.635.0>}
+```
+
+#### Get Temp
+
+```
+Metex.Worker.get_temp "Multan"
+# "16.0°C"
+
+Metex.Worker.get_temp "Multan"
+# "16.0°C"
+```
+
+#### Get & Reset Stats
+
+```
+Metex.Worker.get_stats
+# %{"Multan" => 2}
+Metex.Worker.reset_stats
+# :ok
+
+Metex.Worker.get_stats
+# %{}
+```
+
+#### Terminate Server
+
+```
+Metex.Worker.stop
+# server terminated because of reason :normal
 :ok
-Hong Kong 12.74, Macau 12.42, Monaco 10.72, Multan 13.0, Singapore 24.33, Vatican City 11.25
 ```
